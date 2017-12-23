@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+body{
+  margin:0 !important;
+}
+.protograph-card{
+  position:relative;
+  overflow: hidden;
+  letter-spacing: normal;
+  box-sizing: border-box;
+}
+#protograph_div{
+  margin: auto;
+}
+#protograph_div.protograph-laptop-mode {
+  width: auto;
+}
+#protograph_div.protograph-mobile-mode {
+  width: 320px;
+}
+.protograph-card-title {
+  font-size: 24px;
+  padding: 20px;
+  margin: 0px !important;
+}
+.protograph-house-color {
+  color: #4a90e3;
+  border-color: #4a90e3;
+}
+.protograph-house-bg-color {
+  background-color: #4a90e3;
+}
+.protograph-star {
+  font-size: 28px !important;
+}
+.protograph-star-small {
+	font-size: 16px !important;
+}
+.protograph-active-star {
+  color: #f7ca4a;
+}
+.protograph-inactive-star {
+  color: #e3e3e3;
+}
+.no-margins {
+	margin: 0px !important;
+}
+.district-map {
+	height: 130px;
+}
+.protograph-header-container {
+	padding: 10px 20px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #efefef;
+}
+.protograph-header {
+	bottom: 0px;
+	position: absolute;
+}
+.protograph-water-exp-score {
+	font-size: 48px;
+	font-weight: bold;
+	position: relative;
+}
+.protograph-header-text {
+	margin-bottom: 30px;
+}
+.protograph-header-asterisk {
+	margin-left: 10px;
+	font-size: 23px;
+	position: absolute;
+	top: 20px;
+}
+.protograh-table {
+	display: table;
+	border-collapse: collapse;
+}
+.protograph-table-row {
+	display: table-row;
+}
+.protograph-table-cell {
+	display: table-cell;
+	padding: 10px;
+	padding-bottom: 5px;
+}
+.protograph-card-description strong {
+	color: #4a90e3;
+}
+.protograph-rating-guide {
+	margin-top: 15px;
+	padding: 0px 10px;
+	font-size: 12px;
+	color: #dadada;
+}
+.protograph-bottom-note {
+	font-size: 12px;
+	color: #dadada;
+	border-top: 1px solid #efefef;
+}

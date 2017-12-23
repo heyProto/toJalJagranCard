@@ -1,0 +1,13 @@
+{
+  "data": {
+		"language": "hindi",
+	  "district": "आगरा",
+		"water_exploitation_score": 1,
+		"concretisation_score": 2,
+		"yearly_rainfall_score": 3,
+		"forest_cover_score": 4,
+		"water_score": 5,
+		"description": "आगरा में २०१५ में कुल १३ जगाओं में पानी का स्तर नापा गया था, जिन्मे से __६९ % जगाओं में ज़मीन से पानी खींचना मुश्किल था।__ \n\nज़मीन की पानी सोख लेनी की क्षमता, बारिश की मात्रा, वन आवरण ओर कोंक्रेटआईज़ेशन ऐसे कुछ कारण हैं जिनसे एक ज़िले की भूज़ल मात्रा प्रभावित है।",
+		"map": "https://dkqrqc7q64awx.cloudfront.net/6cba874add6faa1bd8d5592a/4600.png"
+  }
+}

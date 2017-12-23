@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://example.com/example.json",
+  "properties": {
+    "data": {
+      "type": "object",
+      "title":"Water Exploitation Data",
+      "properties": {
+        "language": {
+          "id": "/properties/language",
+          "type": "string",
+          "default": "hindi",
+          "enum": [
+              "english",
+              "hindi"
+          ],
+          "enumNames": [
+              "English",
+              "Hindi"
+          ],
+          "title": "Language"
+        },
+        "district": {
+          "title": "District",
+          "type": "string",
+          "default":"आगरा"
+        },
+        "water_exploitation_score":{
+          "title": "Water exploitation score",
+          "type":"integer",
+          "enum":[0,1,2,3,4,5],
+          "enumName":["उपलब्ध नहीं", "खराब", "औसत से कम", "औसत", "औसत से ऊपर", "अच्छा"],
+          "default": 3
+        },
+        "concretisation_score": {
+          "title": "Concretisation score",
+          "type":"integer",
+          "enum":[0,1,2,3,4,5],
+          "enumName":["उपलब्ध नहीं", "खराब", "औसत से कम", "औसत", "औसत से ऊपर", "अच्छा"],
+          "default": 3
+        },
+        "yearly_rainfall_score": {
+          "title": "Yearly Rainfall score",
+          "type":"integer",
+          "enum":[0,1,2,3,4,5],
+          "enumName":["उपलब्ध नहीं", "खराब", "औसत से कम", "औसत", "औसत से ऊपर", "अच्छा"],
+          "default": 3
+        },
+        "forest_cover_score": {
+          "title": "Forest cover score",
+          "type":"integer",
+          "enum":[0,1,2,3,4,5],
+          "enumName":["उपलब्ध नहीं", "खराब", "औसत से कम", "औसत", "औसत से ऊपर", "अच्छा"],
+          "default": 3
+        },
+        "water_score": {
+          "title": "Water score",
+          "type":"integer",
+          "enum":[0,1,2,3,4,5],
+          "enumName":["उपलब्ध नहीं", "खराब", "औसत से कम", "औसत", "औसत से ऊपर", "अच्छा"],
+          "default": 3
+        },
+        "description": {
+          "title": "Description",
+          "type":"string"
+        },
+        "map": {
+          "id": "/properties/data/properties/map",
+          "title": "District map",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "type": "object"
+}
