@@ -1,3 +1,7 @@
 {
-  "data":{}
+  "data":{
+    "description": {
+      "ui:widget": "textarea"
+    }
+  }
 }

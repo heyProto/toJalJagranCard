@@ -18,7 +18,7 @@ export default class WaterExploitationCard extends React.Component {
     if (this.props.dataJSON) {
       stateVar.fetchingData = false;
       stateVar.dataJSON = this.props.dataJSON;
-      stateVar.languageTexts = this.getLanguageTexts(this.props.dataJSON.card_data.data.language);
+      stateVar.languageTexts = this.getLanguageTexts(this.props.dataJSON.data.language);
     }
 
     if (this.props.schemaJSON) {
@@ -60,7 +60,7 @@ export default class WaterExploitationCard extends React.Component {
     if (nextProps.dataJSON) {
       this.setState({
         dataJSON: nextProps.dataJSON,
-        languageTexts: this.getLanguageTexts(nextProps.dataJSON.card_data.data.language)
+        languageTexts: this.getLanguageTexts(nextProps.dataJSON.data.language)
       });
     }
   }
@@ -127,7 +127,6 @@ export default class WaterExploitationCard extends React.Component {
       return(<div>Loading</div>)
     } else {
       const data = this.state.dataJSON.data;
-      // debugger;
       return (
         <div id="protograph_div" className="protograph-laptop-mode" style={{fontFamily: this.state.languageTexts.font}}>
           <div className="protograph-card">
@@ -259,45 +258,46 @@ export default class WaterExploitationCard extends React.Component {
     if (this.state.schemaJSON === undefined ){
       return(<div>Loading</div>)
     } else {
-      const data = this.state.dataJSON.card_data.data;
-      let styles = {
-        fontFamily: this.state.languageTexts.font
-      }//Custom style object for screenshot mode
-      let blocks=data.blocks;
-      return (
-        <div id="ProtoScreenshot" style={styles}>
-          <div className="protograph-card">
-            <p className="protograph-card-title">{this.state.languageTexts.title}</p>
-            <div className="protograph-annual">
-              {this.generateStars(data.decadal_decrease_score)}
-              <p>पसंद जिम्मे विज्ञान शारिरिक सीमित औषधिक करता सहायता सुस्पश्ट लाभान्वित एछित विकास परस्पर विश्वव्यापि सक्षम तकनीकी पहोचाना निरपेक्ष देते भाषा माध्यम गटकउसि मुख्यतह समजते अधिक हमारी असक्षम संस्थान उपलब्धता</p>
-              {/* <p className="protograph-annual-average protograph-ratio">0{data.decadal_decrease_score}<span className="protograph-ratio-total">/05</span></p> */}
-              <div className="protograph-toWaterExploitation-sub-heading protograph-house-color">
-                {this.state.languageTexts.decreaseInLevel}
-              </div>
-            </div>
-            <div className="protograph-toWaterExploitation-beakers">
-              <div className="protograph-vals protograph-vals-mobile">
-                <div className="protograph-toWaterExploitation-beakers-container" style={{width:110*blocks.length}}>
-                {
-                  blocks.map((block,i)=>{
-                    return(
-                      <div key={i} className="protograph-toWaterExploitation-beaker" style={{width:110}}>
-                        <div className="protograph-toWaterExploitation-beaker-name">{block.name}</div>
-                        <div className="protograph-toWaterExploitation-beaker-img-container">
-                          <img src={block.decadal_change === "No Change" ? `${this.props.baseURL}/images/water_normal.png` : `${this.props.baseURL}/images/water_low.png`} style={{width:"100%"}}></img>
-                        </div>
-                        <div>{this.state.languageTexts.decadalChange(block.decadal_change)}</div>
-                      </div>
-                    );
-                  })
-                }
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )
+      return (<div>Under construction</div>)
+      // const data = this.state.dataJSON.card_data.data;
+      // let styles = {
+      //   fontFamily: this.state.languageTexts.font
+      // }//Custom style object for screenshot mode
+      // let blocks=data.blocks;
+      // return (
+      //   <div id="ProtoScreenshot" style={styles}>
+      //     <div className="protograph-card">
+      //       <p className="protograph-card-title">{this.state.languageTexts.title}</p>
+      //       <div className="protograph-annual">
+      //         {this.generateStars(data.decadal_decrease_score)}
+      //         <p>पसंद जिम्मे विज्ञान शारिरिक सीमित औषधिक करता सहायता सुस्पश्ट लाभान्वित एछित विकास परस्पर विश्वव्यापि सक्षम तकनीकी पहोचाना निरपेक्ष देते भाषा माध्यम गटकउसि मुख्यतह समजते अधिक हमारी असक्षम संस्थान उपलब्धता</p>
+      //         {/* <p className="protograph-annual-average protograph-ratio">0{data.decadal_decrease_score}<span className="protograph-ratio-total">/05</span></p> */}
+      //         <div className="protograph-toWaterExploitation-sub-heading protograph-house-color">
+      //           {this.state.languageTexts.decreaseInLevel}
+      //         </div>
+      //       </div>
+      //       <div className="protograph-toWaterExploitation-beakers">
+      //         <div className="protograph-vals protograph-vals-mobile">
+      //           <div className="protograph-toWaterExploitation-beakers-container" style={{width:110*blocks.length}}>
+      //           {
+      //             blocks.map((block,i)=>{
+      //               return(
+      //                 <div key={i} className="protograph-toWaterExploitation-beaker" style={{width:110}}>
+      //                   <div className="protograph-toWaterExploitation-beaker-name">{block.name}</div>
+      //                   <div className="protograph-toWaterExploitation-beaker-img-container">
+      //                     <img src={block.decadal_change === "No Change" ? `${this.props.baseURL}/images/water_normal.png` : `${this.props.baseURL}/images/water_low.png`} style={{width:"100%"}}></img>
+      //                   </div>
+      //                   <div>{this.state.languageTexts.decadalChange(block.decadal_change)}</div>
+      //                 </div>
+      //               );
+      //             })
+      //           }
+      //           </div>
+      //         </div>
+      //       </div>
+      //     </div>
+      //   </div>
+      // )
     }
   }
 

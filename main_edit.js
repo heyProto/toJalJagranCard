@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import EditWaterExploitation from './src/js/edit_card_name.jsx';
+import EditWaterExploitation from './src/js/edit_card.jsx';
 
 ProtoGraph.Card.toWaterExploitation.prototype.getData = function (data) {
   return this.containerInstance.exportData();

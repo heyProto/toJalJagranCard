@@ -1,18 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import WaterExploitation from './card_name.jsx';
+import WaterExploitation from './card.jsx';
 import JSONSchemaForm from '../../lib/js/react-jsonschema-form';
+
 export default class EditWaterExploitation extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       step: 1,
-      dataJSON: {
-        card_data: {},
-        configs: {}
-      },
-      mode: "laptop",
+      dataJSON: {},
+      mode: "laptop_col7",
       publishing: false,
       schemaJSON: undefined,
       uiSchemaJSON: {},
@@ -42,10 +40,7 @@ export default class EditWaterExploitation extends React.Component {
 ])
         .then(axios.spread((card, schema, opt_config, opt_config_schema,uiSchema) => {
           this.setState({
-            dataJSON: {
-              card_data: card.data,
-              configs: opt_config.data
-            },
+            dataJSON: card.data,
             schemaJSON: schema.data,
             optionalConfigJSON: opt_config.data,
             optionalConfigSchemaJSON: opt_config_schema.data,
@@ -64,7 +59,7 @@ export default class EditWaterExploitation extends React.Component {
     //Change the data of the form based on current step and previous data
     this.setState((prevStep, prop) => {
       let dataJSON = prevStep.dataJSON;
-      dataJSON.card_data = formData
+      dataJSON.data = formData
       return {
         dataJSON: dataJSON
       }
@@ -89,15 +84,15 @@ export default class EditWaterExploitation extends React.Component {
     //Any custom logic can be added to a function like this and a case in the switch statement can be added for it
   }
   renderSchemaJSON() {
-        return this.state.schemaJSON;
+    return this.state.schemaJSON.properties.data;
   }
 
   renderFormData() {
-      return this.state.dataJSON.card_data;
+    return this.state.dataJSON.data;
   }
 
   showButtonText() {
-      return 'Publish';
+    return 'Publish';
   }
 
   toggleMode(e) {
@@ -150,7 +145,7 @@ export default class EditWaterExploitation extends React.Component {
                 <JSONSchemaForm schema={this.renderSchemaJSON()}
                   onSubmit={((e) => this.onSubmitHandler(e))}
                   onChange={((e) => this.onChangeHandler(e))}
-                  uiSchema={this.state.uiSchemaJSON}
+                  uiSchema={this.state.uiSchemaJSON.data}
                   formData={this.renderFormData()}>
                   <button type="submit" className={`${this.state.publishing ? 'ui primary loading disabled button' : ''} default-button protograph-primary-button`}>{this.showButtonText()}</button>
                 </JSONSchemaForm>
@@ -158,8 +153,8 @@ export default class EditWaterExploitation extends React.Component {
               <div className="twelve wide column proto-card-preview proto-share-card-div">
                 <div className="protograph-menu-container">
                   <div className="ui compact menu">
-                    <a className={`item ${this.state.mode === 'laptop' ? 'active' : ''}`}
-                      data-mode='laptop'
+                    <a className={`item ${this.state.mode === 'laptop_col7' ? 'active' : ''}`}
+                      data-mode='laptop_col7'
                       onClick={(e) => this.toggleMode(e)}
                     >
                       <i className="desktop icon"></i>
@@ -172,14 +167,16 @@ export default class EditWaterExploitation extends React.Component {
                     </a>
                   </div>
                 </div>
-                <WaterExploitation
-                  mode={this.state.mode}
-                  dataJSON={this.state.dataJSON}
-                  schemaJSON={this.state.schemaJSON}
-                  optionalConfigJSON={this.state.optionalConfigJSON}
-                  optionalConfigSchemaJSON={this.state.optionalConfigSchemaJSON}
-                  baseURL={this.props.baseURL}
-                />
+                <div className={`protograph-edit-${this.state.mode}`}>
+                  <WaterExploitation
+                    mode={this.state.mode}
+                    dataJSON={this.state.dataJSON}
+                    schemaJSON={this.state.schemaJSON}
+                    optionalConfigJSON={this.state.optionalConfigJSON}
+                    optionalConfigSchemaJSON={this.state.optionalConfigSchemaJSON}
+                    baseURL={this.props.baseURL}
+                  />
+                </div>
               </div>
             </div>
           </div>

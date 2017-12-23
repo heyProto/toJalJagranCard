@@ -67,4 +67,14 @@
   left: 50%;
   transform: translate(-50%,-50%);
 }
+
+.protograph-edit-laptop_col7 {
+  width: 640px;
+  margin: 0 auto;
+}
+.protograph-edit-mobile {
+  width: 320px;
+  margin: 0 auto;
+}
+
 /*# sourceMappingURL=master-style.css.map */
