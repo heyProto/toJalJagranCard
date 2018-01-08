@@ -77,26 +77,11 @@ export default class WaterExploitationCard extends React.Component {
     switch(language.toLowerCase()) {
       case "hindi":
         text_obj = {
-          title: "भूजल का शोषण",
-          decreaseInLevel: 'भूजल स्तर में कमी (cm में)',
-          decadalChange: function (s) {
-            switch(s) {
-              case "No Change":
-                return 'कोई परिवर्तन नहीं';
-              default:
-                return s;
-            }
-          },
           font: "'Sarala', sans-serif"
         }
         break;
       default:
         text_obj = {
-          title: "Ground Water Exploitation",
-          decreaseInLevel: 'Decrease in Ground Water Level(in cm)',
-          decadalChange: function (s) {
-            return s;
-          },
           font: undefined
         }
         break;
