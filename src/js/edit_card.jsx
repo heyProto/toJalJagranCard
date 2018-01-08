@@ -10,7 +10,7 @@ export default class EditWaterExploitation extends React.Component {
     this.state = {
       step: 1,
       dataJSON: {},
-      mode: "laptop_col7",
+      mode: "col7",
       publishing: false,
       schemaJSON: undefined,
       uiSchemaJSON: {},
@@ -153,17 +153,17 @@ export default class EditWaterExploitation extends React.Component {
               <div className="twelve wide column proto-card-preview proto-share-card-div">
                 <div className="protograph-menu-container">
                   <div className="ui compact menu">
-                    <a className={`item ${this.state.mode === 'laptop_col7' ? 'active' : ''}`}
+                    <a className={`item ${this.state.mode === 'col7' ? 'active' : ''}`}
                       data-mode='laptop_col7'
                       onClick={(e) => this.toggleMode(e)}
                     >
-                      <i className="desktop icon"></i>
+                      col-7
                     </a>
-                    <a className={`item ${this.state.mode === 'mobile' ? 'active' : ''}`}
+                    <a className={`item ${this.state.mode === 'col4' ? 'active' : ''}`}
                       data-mode='mobile'
                       onClick={(e) => this.toggleMode(e)}
                     >
-                      <i className="mobile icon"></i>
+                      col-4
                     </a>
                   </div>
                 </div>

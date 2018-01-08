@@ -6,34 +6,29 @@ window.ProtoGraph = window.ProtoGraph || {};
 window.ProtoGraph.Card = window.ProtoGraph.Card || {};
 
 
-ProtoGraph.Card.toWaterExploitation = function () {
-  this.cardType = 'toWaterExploitation';
+ProtoGraph.Card.WaterExploitation = function () {
+  this.cardType = 'WaterExploitation';
 }
 
-ProtoGraph.Card.toWaterExploitation.prototype.init = function (options) {
+ProtoGraph.Card.WaterExploitation.prototype.init = function (options) {
   this.options = options;
 }
 
-ProtoGraph.Card.toWaterExploitation.prototype.getData = function (data) {
+ProtoGraph.Card.WaterExploitation.prototype.getData = function (data) {
   return this.containerInstance.exportData();
 }
 
-ProtoGraph.Card.toWaterExploitation.prototype.renderLaptopCol7 = function (data) {
-  this.mode = 'laptop_col7';
+ProtoGraph.Card.WaterExploitation.prototype.renderCol7 = function (data) {
+  this.mode = 'col7';
   this.render();
 }
 
-ProtoGraph.Card.toWaterExploitation.prototype.renderMobile = function (data) {
-  this.mode = 'mobile';
+ProtoGraph.Card.WaterExploitation.prototype.renderCol4 = function (data) {
+  this.mode = 'col4';
   this.render();
 }
 
-ProtoGraph.Card.toWaterExploitation.prototype.renderScreenshot = function (data) {
-  this.mode = 'screenshot';
-  this.render();
-}
-
-ProtoGraph.Card.toWaterExploitation.prototype.render = function () {
+ProtoGraph.Card.WaterExploitation.prototype.render = function () {
   ReactDOM.render(
     <WaterExploitation
       dataURL={this.options.data_url}

@@ -26,6 +26,13 @@
           "type": "string",
           "default":"आगरा"
         },
+        "water_score": {
+          "title": "Water score",
+          "type":"string",
+          "enum":["कठिन","आसान"],
+          "enumNames":["कठिन", "आसान"],
+          "default": "आसान"
+        },
         "water_exploitation_score":{
           "title": "Water exploitation score",
           "type":"integer",
@@ -40,13 +47,6 @@
           "enumNames":["उपलब्ध नहीं", "खराब", "औसत से कम", "औसत", "औसत से ऊपर", "अच्छा"],
           "default": 3
         },
-        "yearly_rainfall_score": {
-          "title": "Yearly Rainfall score",
-          "type":"integer",
-          "enum":[0,1,2,3,4,5],
-          "enumNames":["उपलब्ध नहीं", "खराब", "औसत से कम", "औसत", "औसत से ऊपर", "अच्छा"],
-          "default": 3
-        },
         "forest_cover_score": {
           "title": "Forest cover score",
           "type":"integer",
@@ -54,8 +54,8 @@
           "enumNames":["उपलब्ध नहीं", "खराब", "औसत से कम", "औसत", "औसत से ऊपर", "अच्छा"],
           "default": 3
         },
-        "water_score": {
-          "title": "Water score",
+        "rainfall_deficit_score": {
+          "title": "Yearly Rainfall score",
           "type":"integer",
           "enum":[0,1,2,3,4,5],
           "enumNames":["उपलब्ध नहीं", "खराब", "औसत से कम", "औसत", "औसत से ऊपर", "अच्छा"],

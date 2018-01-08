@@ -12,9 +12,7 @@
   <body>
     <style>
       #water-exp-div {
-        width: 640px;
         margin: 0 auto;
-        border: 1px solid #efefef;
       }
       @media only screen and (max-width: 500px) {
         #water-exp-div {
@@ -29,7 +27,7 @@
     <div id="water-exp-div"></div>
     <script src = "dist/0.0.1/card.min.js"></script>
     <script type="text/javascript">
-    var x = new ProtoGraph.Card.toWaterExploitation();
+    var x = new ProtoGraph.Card.WaterExploitation();
     x.init({
       selector: document.querySelector('#water-exp-div'),
       data_url: "dist/0.0.1/sample.json",
@@ -39,12 +37,9 @@
       base_url: "http://localhost:8080/dist/0.0.1"
     })
 
-    if (window.innerWidth <= 500) {
-      x.renderMobile();
-    } else {
-      x.renderLaptopCol7();
-      // x.renderScreenshot();
-    }
+    // x.renderCol7();
+    x.renderCol4();
+
     </script>
   </body>
 </html>

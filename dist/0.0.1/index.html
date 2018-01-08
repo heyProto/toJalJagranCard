@@ -3,7 +3,7 @@
   <head>
     <meta charset = "UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>toWaterExploitation</title>
+    <title>WaterExploitation</title>
     <link href="https://fonts.googleapis.com/css?family=Hind" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://dwln9tzsi7g07.cloudfront.net/Assets/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="card.min.css">
@@ -51,7 +51,7 @@
     <script src="https://dwln9tzsi7g07.cloudfront.net/lib/protograph-core.min.js"></script>
     <script src = "card.min.js"></script>
     <script type="text/javascript">
-    var x = new ProtoGraph.Card.toWaterExploitation();
+    var x = new ProtoGraph.Card.WaterExploitation();
     function findGetParameter(parameterName) {
         var result = null,
             tmp = [],
@@ -71,7 +71,7 @@
       schema_id = findGetParameter('schema_id');
 
     if (siteId && view_cast_id) {
-      _paq.push(['trackEvent', 'toWaterExploitation', 'page_view', view_cast_id]);
+      _paq.push(['trackEvent', 'WaterExploitation', 'page_view', view_cast_id]);
     }
 
     var ReceiverConsumer = Oasis.Consumer.extend({
@@ -133,11 +133,11 @@
 
     function renderWithMode(mode) {
       switch(mode){
-        case "laptop":
-          x.renderLaptop();
+        case "col7":
+          x.renderCol7();
           break;
-        case "mobile":
-          x.renderMobile();
+        case "col4":
+          x.renderCol4();
           break;
       }
     }
