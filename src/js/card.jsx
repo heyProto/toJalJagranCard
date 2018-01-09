@@ -255,6 +255,24 @@ export default class WaterExploitationCard extends React.Component {
     }
   }
 
+  renderGrid() {
+    if (this.state.schemaJSON === undefined) {
+      return (<div>Loading</div>)
+    } else {
+      const data = this.state.dataJSON.data;
+      return (
+        <div id="protograph_div" className="col-2-grid-card">
+          <div className="col-2-bgimage">
+            <img className="col-2-image" src={data.map} />
+          </div>
+          <div className="col-2-name">
+            {data.district}
+          </div>
+        </div>
+      )
+    }
+  }
+
   render() {
     switch(this.props.mode) {
       case 'col7' :
@@ -262,6 +280,9 @@ export default class WaterExploitationCard extends React.Component {
         break;
       case 'col4' :
         return this.renderCol4();
+        break;
+      case 'grid':
+        return this.renderGrid();
         break;
     }
   }

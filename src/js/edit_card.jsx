@@ -156,13 +156,19 @@ export default class EditWaterExploitation extends React.Component {
                       data-mode='col7'
                       onClick={(e) => this.toggleMode(e)}
                     >
-                      col-7
+                      7c
                     </a>
                     <a className={`item ${this.state.mode === 'col4' ? 'active' : ''}`}
                       data-mode='col4'
                       onClick={(e) => this.toggleMode(e)}
                     >
-                      col-4
+                      4c
+                    </a>
+                    <a className={`item ${this.state.mode === 'grid' ? 'active' : ''}`}
+                      data-mode='grid'
+                      onClick={(e) => this.toggleMode(e)}
+                    >
+                      grid
                     </a>
                   </div>
                 </div>

@@ -209,3 +209,15 @@ body{
 .protograph-col4 .protograph-table-cell {
 	float: right;
 }
+.col-2-grid-card {
+	width: 145px;
+}
+.col-2-name {
+  height: 18px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.col-2-image {
+  width: 145px;
+  height: 145px;
+}

@@ -28,6 +28,11 @@ ProtoGraph.Card.WaterExploitation.prototype.renderCol4 = function (data) {
   this.render();
 }
 
+ProtoGraph.Card.WaterExploitation.prototype.renderGrid = function (data) {
+  this.mode = 'grid';
+  this.render();
+}
+
 ProtoGraph.Card.WaterExploitation.prototype.render = function () {
   ReactDOM.render(
     <WaterExploitation
