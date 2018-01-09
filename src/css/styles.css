@@ -9,9 +9,6 @@ body{
 	box-sizing: border-box;
 	height: 100%;
 }
-#protograph_div{
-  margin: auto;
-}
 .clearfix {
 	clear: both;
 }

@@ -138,7 +138,7 @@ export default class EditWaterExploitation extends React.Component {
                 <div>
                   <div className="section-title-text">Fill the form</div>
                   <div className="ui label proto-pull-right">
-                    toWaterExploitation
+                    WaterExploitation
                   </div>
                 </div>
                 <JSONSchemaForm schema={this.renderSchemaJSON()}
@@ -172,7 +172,7 @@ export default class EditWaterExploitation extends React.Component {
                     </a>
                   </div>
                 </div>
-                <div className={`protograph-edit-${this.state.mode}`}>
+                <div className="protograph-app-holder">
                   <WaterExploitation
                     mode={this.state.mode}
                     dataJSON={this.state.dataJSON}
