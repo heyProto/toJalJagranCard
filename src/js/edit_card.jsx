@@ -23,12 +23,12 @@ export default class EditWaterExploitation extends React.Component {
 
   exportData() {
     let getDataObj = {
-      step: this.state.step,
-      dataJSON: this.state.dataJSON.card_data,
+      dataJSON: this.state.dataJSON,
       schemaJSON: this.state.schemaJSON,
-      optionalConfigJSON: this.state.dataJSON.configs,
+      optionalConfigJSON: this.state.optionalConfigJSON,
       optionalConfigSchemaJSON: this.state.optionalConfigSchemaJSON
     }
+
     getDataObj["name"] = getDataObj.dataJSON.data.district.substr(0,225); // Reduces the name to ensure the slug does not get too long, used for the title of the show page after publishing
     return getDataObj;
   }
@@ -78,11 +78,10 @@ export default class EditWaterExploitation extends React.Component {
   }
 
   renderSEO() {
-    //This function should return all the textual content of the card (no images, videos) inside blockquote tag. The content should be inside h3 and p tags only.
+    let seo_blockquote = `<blockquote><h3>${this.state.dataJSON.data.district}</h3></blockquote>`
+    return seo_blockquote;
   }
-  renderCustom(){
-    //Any custom logic can be added to a function like this and a case in the switch statement can be added for it
-  }
+
   renderSchemaJSON() {
     return this.state.schemaJSON.properties.data;
   }
@@ -154,13 +153,13 @@ export default class EditWaterExploitation extends React.Component {
                 <div className="protograph-menu-container">
                   <div className="ui compact menu">
                     <a className={`item ${this.state.mode === 'col7' ? 'active' : ''}`}
-                      data-mode='laptop_col7'
+                      data-mode='col7'
                       onClick={(e) => this.toggleMode(e)}
                     >
                       col-7
                     </a>
                     <a className={`item ${this.state.mode === 'col4' ? 'active' : ''}`}
-                      data-mode='mobile'
+                      data-mode='col4'
                       onClick={(e) => this.toggleMode(e)}
                     >
                       col-4
