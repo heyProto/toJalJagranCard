@@ -113,72 +113,51 @@ export default class WaterExploitationCard extends React.Component {
     } else {
       const data = this.state.dataJSON.data;
       return (
-        <div id="protograph_div" className="protograph-col7" style={{fontFamily: this.state.languageTexts.font}}>
-          <div className="protograph-card">
+        <div id="protograph_div" className="proto-col col-7 proto-modal" style={{ fontFamily: this.state.languageTexts.font }}>
 
-            <div className="protograph-card-header">
-              <div className="protograph-header-container">
-                <div className="protograph-header">
-                  <p className="protograph-header-text">{`${data.district} में भूज़ल निकललना है`}</p>
-                  <span className="protograph-water-exp-score">{data.water_score}
-                    <span className="protograph-header-asterisk">*</span>
-                  </span>
+          <div className="modal-header">
+            <div className="proto-col modal-title">
+            <div className="title-pretext">{`${data.district} में भूजल निकालना है`}</div>
+              {data.water_score} <span className="small">&#42;</span>
+            </div>
+            <div className="proto-col modal-image">
+              <img src={data.map} />
+            </div>
+          </div>
+          <div className="modal-content">
+            <div className="proto-col content-left">
+              <ReactMarkdown
+                className="description"
+                source={data.description}
+              />
+              {/* <p>ज़मीन की पानी सोख लेनी की क्षमता, बारिश की मात्रा, वन आवरण ओर कोंक्रेटआईज़ेशन ऐसे कुछ कारण हैं जिनसे एक ज़िले की भूज़ल मात्रा प्रभावित है।</p> */}
+            </div>
+            <div className="content-right">
+              <div className="list-area">
+                <div className="single-parameter">
+                  <div className="parameter-name">कोंक्रेटआईज़ेशन</div>
+                  <div className="parameter-value">{this.generateStars(data.concretisation_score)}</div>
+                </div>
+                <div className="single-parameter">
+                  <div className="parameter-name">वार्षिक वर्षा</div>
+                  <div className="parameter-value">{this.generateStars(data.rainfall_deficit_score)}</div>
+                </div>
+                <div className="single-parameter">
+                  <div className="parameter-name">वन आवरण</div>
+                  <div className="parameter-value">{this.generateStars(data.forest_cover_score)}</div>
+                </div>
+                <div className="single-parameter">
+                  <div className="parameter-name">ज़मीन की पानी सोख लेनी की क्षमता</div>
+                  <div className="parameter-value">{this.generateStars(data.water_exploitation_score)}</div>
                 </div>
               </div>
-              <div className="protograph-image-container">
-                <img className="district-map" src={data.map} />
+              <div className="hint-text">
+                नोट: 5 स्टार का मतलब सबसे अच्छा, 1 स्टार सबेसे बुरा। हर ज़िले की स्टार रेटिंग्स उत्तर प्रदेश के बाक़ी जिलों की तुलना में हैं।
               </div>
             </div>
-            <div className="protograph-card-content">
-              <div className="protograph-left-content">
-                <ReactMarkdown
-                  className="protograph-card-description"
-                  source={data.description}
-                />
-                <p className="protograph-card-description-help">ज़मीन की पानी सोख लेनी की क्षमता, बारिश की मात्रा, वन आवरण ओर कोंक्रेटआईज़ेशन ऐसे कुछ कारण हैं जिनसे एक ज़िले की भूज़ल मात्रा प्रभावित है।</p>
-              </div>
-              <div className="protograph-right-content">
-                <div className="protograh-table">
-                  <div className="protograph-table-row">
-                    <div className="protograph-table-cell-heading">कोंक्रेटआईज़ेशन</div>
-                    <div className="protograph-table-cell">
-                      {this.generateStars(data.concretisation_score)}
-                    </div>
-                  </div>
-
-                  <div className="protograph-table-row">
-                    <div className="protograph-table-cell-heading">वार्षिक वर्षा</div>
-                    <div className="protograph-table-cell">
-                      {this.generateStars(data.rainfall_deficit_score)}
-                    </div>
-                  </div>
-
-                  <div className="protograph-table-row">
-                    <div className="protograph-table-cell-heading">वन आवरण</div>
-                    <div className="protograph-table-cell">
-                      {this.generateStars(data.forest_cover_score)}
-                    </div>
-                  </div>
-
-                  <div className="protograph-table-row">
-                    <div className="protograph-table-cell-heading">ज़मीन की पानी सोख लेनी की क्षमता</div>
-                    <div className="protograph-table-cell">
-                      {this.generateStars(data.water_exploitation_score)}
-                    </div>
-                  </div>
-                </div>
-                <p className="protograph-rating-guide">
-                  नोट: 5 स्टार का मतलब सबसे अच्छा, 1 स्टार सबेसे बुरा। हर ज़िले की स्टार रेटिंग्स उत्तर प्रदेश के बाक़ी जिलों की तुलना में हैं।
-                  </p>
-
-              </div>
-              <div className="clearfix"></div>
-            </div>
-            <div className="protograph-bottom-note">
-              <p>
-                * 'कठिन' क्षेत्रों में ज़मीन से पानी खींचने के लिए मोटर की ज़रूरत होती है, जबकी 'आसान' क्षेत्रों में मोटर की ज़रूरत नहीं होती। थिंक-टैंक PRS के अनुसार 10 मीटर नीचे से पानी खींचने के लिए मोटर की ज़रूरत होती है।
-                </p>
-            </div>
+          </div>
+          <div className="modal-footer">
+              &#42; 'कठिन' क्षेत्रों में ज़मीन से पानी खींचने के लिए मोटर की ज़रूरत होती है, जबकी 'आसान' क्षेत्रों में मोटर की ज़रूरत नहीं होती। थिंक-टैंक PRS के अनुसार 10 मीटर नीचे से पानी खींचने के लिए मोटर की ज़रूरत होती है।
           </div>
         </div>
       )
@@ -191,69 +170,57 @@ export default class WaterExploitationCard extends React.Component {
     } else {
       const data = this.state.dataJSON.data;
       return (
-        <div id="protograph_div" className="protograph-col4" style={{ fontFamily: this.state.languageTexts.font }}>
-          <div className="protograph-card">
-            <div className="protograph-card-header">
-              <div className="protograph-header-container">
-                <img className="district-map" src={data.map} />
-                <p className="protograph-header-text">{`${data.district} में भूज़ल निकललना है`}</p>
-                <span className="protograph-water-exp-score">{data.water_score}
-                  <span className="protograph-header-asterisk">*</span>
-                </span>
-              </div>
+        <div id="protograph_div" className="proto-col col-4 proto-modal proto-modal-mobile" style={{ fontFamily: this.state.languageTexts.font }}>
 
+          <div className="modal-header">
+            <div className="proto-col modal-title">
+              <div className="title-pretext">{`${data.district} में भूजल निकालना है`}</div>
+              {data.water_score} <span className="small">&#42;</span>
             </div>
-            <div className="protograph-card-content">
-                <ReactMarkdown
-                  className="protograph-card-description"
-                  source={data.description}
-                />
-                <p className="protograph-card-description-help">ज़मीन की पानी सोख लेनी की क्षमता, बारिश की मात्रा, वन आवरण ओर कोंक्रेटआईज़ेशन ऐसे कुछ कारण हैं जिनसे एक ज़िले की भूज़ल मात्रा प्रभावित है।</p>
-                <div className="protograh-table">
-                  <div className="protograph-table-row">
-                    <div className="protograph-table-cell-heading">कोंक्रेटआईज़ेशन</div>
-                    <div className="protograph-table-cell">
-                      {this.generateStars(data.concretisation_score)}
-                    </div>
-                  </div>
-
-                  <div className="protograph-table-row">
-                    <div className="protograph-table-cell-heading">वार्षिक वर्षा</div>
-                    <div className="protograph-table-cell">
-                      {this.generateStars(data.rainfall_deficit_score)}
-                    </div>
-                  </div>
-
-                  <div className="protograph-table-row">
-                    <div className="protograph-table-cell-heading">वन आवरण</div>
-                    <div className="protograph-table-cell">
-                      {this.generateStars(data.forest_cover_score)}
-                    </div>
-                  </div>
-
-                  <div className="protograph-table-row">
-                    <div className="protograph-table-cell-heading">ज़मीन की पानी सोख लेनी की क्षमता</div>
-                    <div className="protograph-table-cell">
-                      {this.generateStars(data.water_exploitation_score)}
-                    </div>
-                  </div>
+            <div className="proto-col modal-image">
+              <img src={data.map} />
+            </div>
+          </div>
+          <div className="modal-content">
+            <div className="proto-col content-left">
+              <ReactMarkdown
+                className="description"
+                source={data.description}
+              />
+              {/* <p>ज़मीन की पानी सोख लेनी की क्षमता, बारिश की मात्रा, वन आवरण ओर कोंक्रेटआईज़ेशन ऐसे कुछ कारण हैं जिनसे एक ज़िले की भूज़ल मात्रा प्रभावित है।</p> */}
+            </div>
+            <div className="content-right">
+              <div className="list-area">
+                <div className="single-parameter">
+                  <div className="parameter-name">कोंक्रेटआईज़ेशन</div>
+                  <div className="parameter-value">{this.generateStars(data.concretisation_score)}</div>
                 </div>
-                <p className="protograph-rating-guide">
-                  नोट: 5 स्टार का मतलब सबसे अच्छा, 1 स्टार सबेसे बुरा। हर ज़िले की स्टार रेटिंग्स उत्तर प्रदेश के बाक़ी जिलों की तुलना में हैं।
-                  </p>
-
-              <div className="clearfix"></div>
+                <div className="single-parameter">
+                  <div className="parameter-name">वार्षिक वर्षा</div>
+                  <div className="parameter-value">{this.generateStars(data.rainfall_deficit_score)}</div>
+                </div>
+                <div className="single-parameter">
+                  <div className="parameter-name">वन आवरण</div>
+                  <div className="parameter-value">{this.generateStars(data.forest_cover_score)}</div>
+                </div>
+                <div className="single-parameter">
+                  <div className="parameter-name">ज़मीन की पानी सोख लेनी की क्षमता</div>
+                  <div className="parameter-value">{this.generateStars(data.water_exploitation_score)}</div>
+                </div>
+              </div>
+              <div className="hint-text">
+                नोट: 5 स्टार का मतलब सबसे अच्छा, 1 स्टार सबेसे बुरा। हर ज़िले की स्टार रेटिंग्स उत्तर प्रदेश के बाक़ी जिलों की तुलना में हैं।
+              </div>
             </div>
-            <div className="protograph-bottom-note">
-              <p>
-                * 'कठिन' क्षेत्रों में ज़मीन से पानी खींचने के लिए मोटर की ज़रूरत होती है, जबकी 'आसान' क्षेत्रों में मोटर की ज़रूरत नहीं होती। थिंक-टैंक PRS के अनुसार 10 मीटर नीचे से पानी खींचने के लिए मोटर की ज़रूरत होती है।
-                </p>
-            </div>
+          </div>
+          <div className="modal-footer">
+            &#42; 'कठिन' क्षेत्रों में ज़मीन से पानी खींचने के लिए मोटर की ज़रूरत होती है, जबकी 'आसान' क्षेत्रों में मोटर की ज़रूरत नहीं होती। थिंक-टैंक PRS के अनुसार 10 मीटर नीचे से पानी खींचने के लिए मोटर की ज़रूरत होती है।
           </div>
         </div>
       )
     }
   }
+
 
   renderGrid() {
     if (this.state.schemaJSON === undefined) {
