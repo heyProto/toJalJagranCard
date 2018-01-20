@@ -3,7 +3,7 @@
 		"language": "hindi",
 	  "district": "आगरा",
 		"water_score": "आसान",
-		"water_exploitation_score": 5,
+		"population_score": 5,
 		"concretisation_score": 2,
 		"forest_cover_score": 4,
 		"rainfall_deficit_score": 3,

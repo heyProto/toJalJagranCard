@@ -33,8 +33,8 @@
           "enumNames":["कठिन", "आसान"],
           "default": "आसान"
         },
-        "water_exploitation_score":{
-          "title": "Water exploitation score",
+        "population_score":{
+          "title": "Population score",
           "type":"integer",
           "enum":[0,1,2,3,4,5],
           "enumNames":["उपलब्ध नहीं", "खराब", "औसत से कम", "औसत", "औसत से ऊपर", "अच्छा"],
