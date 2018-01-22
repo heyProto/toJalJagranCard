@@ -147,7 +147,7 @@ export default class WaterExploitationCard extends React.Component {
                   <div className="parameter-value">{this.generateStars(data.forest_cover_score)}</div>
                 </div>
                 <div className="single-parameter">
-                  <div className="parameter-name">आबादी</div>
+                  <div className="parameter-name">जनसंख्या</div>
                   <div className="parameter-value">{this.generateStars(data.population_score)}</div>
                 </div>
               </div>
@@ -204,7 +204,7 @@ export default class WaterExploitationCard extends React.Component {
                   <div className="parameter-value">{this.generateStars(data.forest_cover_score)}</div>
                 </div>
                 <div className="single-parameter">
-                  <div className="parameter-name">आबादी</div>
+                  <div className="parameter-name">जनसंख्या</div>
                   <div className="parameter-value">{this.generateStars(data.population_score)}</div>
                 </div>
               </div>
