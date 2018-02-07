@@ -8,6 +8,7 @@ export default class EditWaterExploitation extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      fetchingData: true,
       step: 1,
       dataJSON: {},
       mode: "col7",
@@ -35,19 +36,29 @@ export default class EditWaterExploitation extends React.Component {
 
   componentDidMount() {
     // get sample json data based on type i.e string or object
-    if (typeof this.props.dataURL === "string"){
-      axios.all([axios.get(this.props.dataURL), axios.get(this.props.schemaURL), axios.get(this.props.optionalConfigURL), axios.get(this.props.optionalConfigSchemaURL),axios.get(this.props.uiSchemaURL)
-])
-        .then(axios.spread((card, schema, opt_config, opt_config_schema,uiSchema) => {
-          this.setState({
+    if (this.state.fetchingData){
+      axios.all([
+        axios.get(this.props.dataURL),
+        axios.get(this.props.schemaURL),
+        axios.get(this.props.optionalConfigURL),
+        axios.get(this.props.optionalConfigSchemaURL),
+        axios.get(this.props.uiSchemaURL),
+        axios.get(this.props.siteConfigURL)
+      ]).then(axios.spread((card, schema, opt_config, opt_config_schema, uiSchema, site_configs) => {
+          let stateVar = {
+            fetchingData: false,
             dataJSON: card.data,
             schemaJSON: schema.data,
             optionalConfigJSON: opt_config.data,
             optionalConfigSchemaJSON: opt_config_schema.data,
-            uiSchemaJSON: uiSchema.data
-          });
-        }))
-        .catch((error) => {
+            uiSchemaJSON: uiSchema.data,
+            siteConfigs: site_configs.data
+          };
+
+          stateVar.dataJSON.data.language = stateVar.siteConfigs.primary_language.toLowerCase();
+          stateVar.optionalConfigJSON.house_colour = stateVar.siteConfigs.house_colour;
+          this.setState(stateVar);
+      })).catch((error) => {
           this.setState({
             errorOnFetchingData: true
           })
@@ -113,7 +124,7 @@ export default class EditWaterExploitation extends React.Component {
   }
 
   render() {
-    if (this.state.schemaJSON === undefined) {
+    if (this.state.fetchingData) {
       return(
         <div className="protograph-loader-container">
           {

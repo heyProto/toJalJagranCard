@@ -42,17 +42,27 @@ export default class WaterExploitationCard extends React.Component {
   componentDidMount() {
     // get sample json data based on type i.e string or object
     if (this.state.fetchingData){
-      axios.all([axios.get(this.props.dataURL), axios.get(this.props.schemaURL), axios.get(this.props.optionalConfigURL), axios.get(this.props.optionalConfigSchemaURL)])
-        .then(axios.spread((card, schema, opt_config, opt_config_schema) => {
-          this.setState({
+      axios.all([
+        axios.get(this.props.dataURL),
+        axios.get(this.props.schemaURL),
+        axios.get(this.props.optionalConfigURL),
+        axios.get(this.props.optionalConfigSchemaURL),
+        axios.get(this.props.siteConfigURL)
+      ]).then(axios.spread((card, schema, opt_config, opt_config_schema, site_configs) => {
+          let stateVar = {
             fetchingData: false,
             dataJSON: card.data,
             schemaJSON: schema.data,
             optionalConfigJSON: opt_config.data,
             optionalConfigSchemaJSON: opt_config_schema.data,
-            languageTexts: this.getLanguageTexts(card.data.data.language)
-          });
-        }));
+            siteConfigs: site_configs.data
+          };
+
+          stateVar.dataJSON.data.language = stateVar.siteConfigs.primary_language.toLowerCase();
+          stateVar.optionalConfigJSON.house_colour = stateVar.siteConfigs.house_colour;
+          stateVar.languageTexts = this.getLanguageTexts(stateVar.dataJSON.data.language);
+          this.setState(stateVar);
+      }));
     }
   }
 
@@ -90,6 +100,14 @@ export default class WaterExploitationCard extends React.Component {
     return text_obj;
   }
 
+  renderStyle() {
+    return (`
+      .description strong {
+        color: ${this.state.optionalConfigJSON.house_colour} !important;
+      }
+    `)
+  }
+
   generateStars(score) {
     let stars = new Array(5).fill(1);
     return (
@@ -114,7 +132,7 @@ export default class WaterExploitationCard extends React.Component {
       const data = this.state.dataJSON.data;
       return (
         <div id="protograph_div" className="proto-col col-7 proto-modal" style={{ fontFamily: this.state.languageTexts.font }}>
-
+          <style dangerouslySetInnerHTML={{ __html: this.renderStyle() }} />
           <div className="modal-header">
             <div className="proto-col modal-title">
             <div className="title-pretext">{`${data.district} में भूजल निकालना है`}</div>
@@ -171,7 +189,7 @@ export default class WaterExploitationCard extends React.Component {
       const data = this.state.dataJSON.data;
       return (
         <div id="protograph_div" className="proto-col col-4 proto-modal proto-modal-mobile" style={{ fontFamily: this.state.languageTexts.font }}>
-
+          <style dangerouslySetInnerHTML={{ __html: this.renderStyle() }} />
           <div className="modal-header">
             <div className="proto-col modal-title">
               <div className="title-pretext">{`${data.district} में भूजल निकालना है`}</div>
@@ -229,6 +247,7 @@ export default class WaterExploitationCard extends React.Component {
       const data = this.state.dataJSON.data;
       return (
         <div id="protograph_div" className="col-2-grid-card">
+          <style dangerouslySetInnerHTML={{ __html: this.renderStyle() }} />
           <div className="col-2-bgimage">
             <img className="col-2-image" src={data.map} />
           </div>
