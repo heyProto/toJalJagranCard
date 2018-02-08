@@ -8,20 +8,6 @@
     <link rel="stylesheet" href="https://cdn.protograph.pykih.com/Assets/proto-app-lib/proto-app-lib.min.css">
     <link rel="stylesheet" href="https://cdn.protograph.pykih.com/Assets/proto-app-lib/grid.min.css">
     <link rel="stylesheet" type="text/css" href="card.min.css">
-    <script type="text/javascript">
-      var origin, base_url;
-      // Setting variables from environment
-      origin = window.location.origin;
-      if (origin == 'https://s3.ap-south-1.amazonaws.com') {
-        let bucket_name = window.location.pathname.split('/')['1'];
-        base_url = origin + "/" + bucket_name;
-      } else if (origin === 'https://dkqrqc7q64awx.cloudfront.net') {
-        base_url = origin;
-      } else {
-        base_url = origin;
-      }
-    </script>
-
   </head>
   <body>
     <div id="card-name-div"></div>
@@ -45,7 +31,9 @@
     }
 
     let view_cast_id = findGetParameter('view_cast_id'),
-      schema_id = findGetParameter('schema_id');
+      schema_id = findGetParameter('schema_id'),
+      base_url = findGetParameter('base_url') || "https://cdn.protograph.pykih.com",
+      schema_base_url = "https://cdn.protograph.pykih.com";
 
     var ReceiverConsumer = Oasis.Consumer.extend({
       requests: {
@@ -53,7 +41,7 @@
           if(typeof (view_cast_id) !== 'undefined' && typeof(schema_id) !== 'undefined'){
             var that = this,
             data_base_path = base_url + "/" + view_cast_id,
-            schema_base_path = base_url + "/" + schema_id,
+            schema_base_path = schema_base_url + "/" + schema_id,
             options;
             options = {
               selector: document.querySelector('#card-name-div'),
@@ -61,6 +49,7 @@
               schema_url: schema_base_path + "/schema.json",
               configuration_url: data_base_path + "/view_cast.json",
               configuration_schema_url: 'configuration_schema.json',
+              site_config_url: base_url + '/site.json',
               onClickCallback: function () {
                 let h = x.getData().height;
                 that.send('resize_frame', {width: '100%', height: h})
