@@ -102,7 +102,7 @@ export default class WaterExploitationCard extends React.Component {
 
   renderStyle() {
     return (`
-      .description strong {
+      .proto-description strong {
         color: ${this.state.optionalConfigJSON.house_colour} !important;
       }
     `)
@@ -131,50 +131,50 @@ export default class WaterExploitationCard extends React.Component {
     } else {
       const data = this.state.dataJSON.data;
       return (
-        <div id="protograph_div" className="proto-col col-7 proto-modal" style={{ fontFamily: this.state.languageTexts.font }}>
+        <div id="protograph_div" className="proto-col-col-7 proto-modal" style={{ fontFamily: this.state.languageTexts.font }}>
           <style dangerouslySetInnerHTML={{ __html: this.renderStyle() }} />
-          <div className="modal-header">
-            <div className="proto-col modal-title">
-            <div className="title-pretext">{`${data.district} में भूजल निकालना है`}</div>
-              {data.water_score} <span className="small">&#42;</span>
+          <div className="proto-modal-header">
+            <div className="proto-col proto-modal-title">
+              <div className="proto-title-pretext">{`${data.district} में भूजल निकालना है`}</div>
+              {data.water_score} <span className="proto-small">&#42;</span>
             </div>
-            <div className="proto-col modal-image">
+            <div className="proto-col proto-modal-image">
               <img src={data.map} />
             </div>
           </div>
-          <div className="modal-content">
-            <div className="proto-col content-left">
+          <div className="proto-modal-content">
+            <div className="proto-col proto-content-left">
               <ReactMarkdown
-                className="description"
+                className="proto-description"
                 source={data.description}
               />
               {/* <p>ज़मीन की पानी सोख लेनी की क्षमता, बारिश की मात्रा, वन आवरण ओर कोंक्रेटआईज़ेशन ऐसे कुछ कारण हैं जिनसे एक ज़िले की भूज़ल मात्रा प्रभावित है।</p> */}
             </div>
-            <div className="content-right">
-              <div className="list-area">
-                <div className="single-parameter">
-                  <div className="parameter-name">कोंक्रेटआईज़ेशन</div>
-                  <div className="parameter-value">{this.generateStars(data.concretisation_score)}</div>
+            <div className="proto-content-right">
+              <div className="proto-list-area">
+                <div className="proto-single-parameter">
+                  <div className="proto-parameter-name">कोंक्रेटआईज़ेशन</div>
+                  <div className="proto-parameter-value">{this.generateStars(data.concretisation_score)}</div>
                 </div>
-                <div className="single-parameter">
-                  <div className="parameter-name">वार्षिक वर्षा</div>
-                  <div className="parameter-value">{this.generateStars(data.rainfall_deficit_score)}</div>
+                <div className="proto-single-parameter">
+                  <div className="proto-parameter-name">वार्षिक वर्षा</div>
+                  <div className="proto-parameter-value">{this.generateStars(data.rainfall_deficit_score)}</div>
                 </div>
-                <div className="single-parameter">
-                  <div className="parameter-name">वन आवरण</div>
-                  <div className="parameter-value">{this.generateStars(data.forest_cover_score)}</div>
+                <div className="proto-single-parameter">
+                  <div className="proto-parameter-name">वन आवरण</div>
+                  <div className="proto-parameter-value">{this.generateStars(data.forest_cover_score)}</div>
                 </div>
-                <div className="single-parameter">
-                  <div className="parameter-name">जनसंख्या</div>
-                  <div className="parameter-value">{this.generateStars(data.population_score)}</div>
+                <div className="proto-single-parameter">
+                  <div className="proto-parameter-name">जनसंख्या</div>
+                  <div className="proto-parameter-value">{this.generateStars(data.population_score)}</div>
                 </div>
               </div>
-              <div className="hint-text">
+              <div className="proto-hint-text">
                 नोट: 5 स्टार का मतलब सबसे अच्छा, 1 स्टार सबेसे बुरा। हर ज़िले की स्टार रेटिंग्स उत्तर प्रदेश के बाक़ी जिलों की तुलना में हैं।
               </div>
             </div>
           </div>
-          <div className="modal-footer">
+          <div className="proto-modal-footer">
               &#42; 'कठिन' क्षेत्रों में ज़मीन से पानी खींचने के लिए मोटर की ज़रूरत होती है, जबकी 'आसान' क्षेत्रों में मोटर की ज़रूरत नहीं होती। थिंक-टैंक PRS के अनुसार 10 मीटर नीचे से पानी खींचने के लिए मोटर की ज़रूरत होती है।
           </div>
         </div>
@@ -188,50 +188,50 @@ export default class WaterExploitationCard extends React.Component {
     } else {
       const data = this.state.dataJSON.data;
       return (
-        <div id="protograph_div" className="proto-col col-4 proto-modal proto-modal-mobile" style={{ fontFamily: this.state.languageTexts.font }}>
+        <div id="protograph_div" className="proto-col-col-4 proto-modal proto-modal-mobile" style={{ fontFamily: this.state.languageTexts.font }}>
           <style dangerouslySetInnerHTML={{ __html: this.renderStyle() }} />
-          <div className="modal-header">
-            <div className="proto-col modal-title">
-              <div className="title-pretext">{`${data.district} में भूजल निकालना है`}</div>
-              {data.water_score} <span className="small">&#42;</span>
+          <div className="proto-modal-header">
+            <div className="proto-col proto-modal-title">
+              <div className="proto-title-pretext">{`${data.district} में भूजल निकालना है`}</div>
+              {data.water_score} <span className="proto-small">&#42;</span>
             </div>
-            <div className="proto-col modal-image">
+            <div className="proto-col proto-modal-image">
               <img src={data.map} />
             </div>
           </div>
-          <div className="modal-content">
-            <div className="proto-col content-left">
+          <div className="proto-modal-content">
+            <div className="proto-col proto-content-left">
               <ReactMarkdown
-                className="description"
+                className="proto-description"
                 source={data.description}
               />
               {/* <p>ज़मीन की पानी सोख लेनी की क्षमता, बारिश की मात्रा, वन आवरण ओर कोंक्रेटआईज़ेशन ऐसे कुछ कारण हैं जिनसे एक ज़िले की भूज़ल मात्रा प्रभावित है।</p> */}
             </div>
-            <div className="content-right">
-              <div className="list-area">
-                <div className="single-parameter">
-                  <div className="parameter-name">कोंक्रेटआईज़ेशन</div>
-                  <div className="parameter-value">{this.generateStars(data.concretisation_score)}</div>
+            <div className="proto-content-right">
+              <div className="proto-list-area">
+                <div className="proto-single-parameter">
+                  <div className="proto-parameter-name">कोंक्रेटआईज़ेशन</div>
+                  <div className="proto-parameter-value">{this.generateStars(data.concretisation_score)}</div>
                 </div>
-                <div className="single-parameter">
-                  <div className="parameter-name">वार्षिक वर्षा</div>
-                  <div className="parameter-value">{this.generateStars(data.rainfall_deficit_score)}</div>
+                <div className="proto-single-parameter">
+                  <div className="proto-parameter-name">वार्षिक वर्षा</div>
+                  <div className="proto-parameter-value">{this.generateStars(data.rainfall_deficit_score)}</div>
                 </div>
-                <div className="single-parameter">
-                  <div className="parameter-name">वन आवरण</div>
-                  <div className="parameter-value">{this.generateStars(data.forest_cover_score)}</div>
+                <div className="proto-single-parameter">
+                  <div className="proto-parameter-name">वन आवरण</div>
+                  <div className="proto-parameter-value">{this.generateStars(data.forest_cover_score)}</div>
                 </div>
-                <div className="single-parameter">
-                  <div className="parameter-name">जनसंख्या</div>
-                  <div className="parameter-value">{this.generateStars(data.population_score)}</div>
+                <div className="proto-single-parameter">
+                  <div className="proto-parameter-name">जनसंख्या</div>
+                  <div className="proto-parameter-value">{this.generateStars(data.population_score)}</div>
                 </div>
               </div>
-              <div className="hint-text">
+              <div className="proto-hint-text">
                 नोट: 5 स्टार का मतलब सबसे अच्छा, 1 स्टार सबेसे बुरा। हर ज़िले की स्टार रेटिंग्स उत्तर प्रदेश के बाक़ी जिलों की तुलना में हैं।
               </div>
             </div>
           </div>
-          <div className="modal-footer">
+          <div className="proto-modal-footer">
             &#42; 'कठिन' क्षेत्रों में ज़मीन से पानी खींचने के लिए मोटर की ज़रूरत होती है, जबकी 'आसान' क्षेत्रों में मोटर की ज़रूरत नहीं होती। थिंक-टैंक PRS के अनुसार 10 मीटर नीचे से पानी खींचने के लिए मोटर की ज़रूरत होती है।
           </div>
         </div>
