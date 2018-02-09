@@ -131,7 +131,7 @@ export default class WaterExploitationCard extends React.Component {
     } else {
       const data = this.state.dataJSON.data;
       return (
-        <div id="protograph_div" className="proto-col col-7 proto-modal" style={{ fontFamily: this.state.languageTexts.font }}>
+        <div id="protograph_div" className="proto-col-col-7 proto-modal" style={{ fontFamily: this.state.languageTexts.font }}>
           <style dangerouslySetInnerHTML={{ __html: this.renderStyle() }} />
           <div className="proto-modal-header">
             <div className="proto-col proto-modal-title">
@@ -188,7 +188,7 @@ export default class WaterExploitationCard extends React.Component {
     } else {
       const data = this.state.dataJSON.data;
       return (
-        <div id="protograph_div" className="proto-col col-4 proto-modal proto-modal-mobile" style={{ fontFamily: this.state.languageTexts.font }}>
+        <div id="protograph_div" className="proto-col-col-4 proto-modal proto-modal-mobile" style={{ fontFamily: this.state.languageTexts.font }}>
           <style dangerouslySetInnerHTML={{ __html: this.renderStyle() }} />
           <div className="proto-modal-header">
             <div className="proto-col proto-modal-title">
