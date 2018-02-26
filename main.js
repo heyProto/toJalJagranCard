@@ -38,8 +38,8 @@ ProtoGraph.Card.WaterExploitation.prototype.render = function () {
     <WaterExploitation
       dataURL={this.options.data_url}
       schemaURL={this.options.schema_url}
-      optionalConfigURL={this.options.configuration_url}
-      optionalConfigSchemaURL={this.options.configuration_schema_url}
+      siteConfigURL={this.options.site_config_url}
+      siteConfigs={this.options.site_configs}
       mode={this.mode}
       baseURL={this.options.base_url}
       ref={(e) => {

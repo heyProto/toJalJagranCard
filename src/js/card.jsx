@@ -10,9 +10,7 @@ export default class WaterExploitationCard extends React.Component {
     let stateVar = {
       fetchingData: true,
       dataJSON: {},
-      schemaJSON: undefined,
       optionalConfigJSON: {},
-      optionalConfigSchemaJSON: undefined,
       languageTexts: undefined
     };
     if (this.props.dataJSON) {
@@ -20,17 +18,11 @@ export default class WaterExploitationCard extends React.Component {
       stateVar.dataJSON = this.props.dataJSON;
       stateVar.languageTexts = this.getLanguageTexts(this.props.dataJSON.data.language);
     }
-
-    if (this.props.schemaJSON) {
-      stateVar.schemaJSON = this.props.schemaJSON;
-    }
-
     if (this.props.optionalConfigJSON) {
       stateVar.optionalConfigJSON = this.props.optionalConfigJSON;
     }
-
-    if (this.props.optionalConfigSchemaJSON) {
-      stateVar.optionalConfigSchemaJSON = this.props.optionalConfigSchemaJSON;
+    if (this.props.siteConfigs) {
+      stateVar.siteConfigs = this.props.siteConfigs;
     }
     this.state = stateVar;
   }
@@ -42,17 +34,25 @@ export default class WaterExploitationCard extends React.Component {
   componentDidMount() {
     // get sample json data based on type i.e string or object
     if (this.state.fetchingData){
-      axios.all([axios.get(this.props.dataURL), axios.get(this.props.schemaURL), axios.get(this.props.optionalConfigURL), axios.get(this.props.optionalConfigSchemaURL)])
-        .then(axios.spread((card, schema, opt_config, opt_config_schema) => {
-          this.setState({
+      let items_to_fetch = [
+        axios.get(this.props.dataURL)
+      ];
+      if (this.props.siteConfigURL) {
+        items_to_fetch.push(axios.get(this.props.siteConfigURL));
+      }
+      axios.all(items_to_fetch)
+        .then(axios.spread((card, site_configs) => {
+          let stateVar = {
             fetchingData: false,
             dataJSON: card.data,
-            schemaJSON: schema.data,
-            optionalConfigJSON: opt_config.data,
-            optionalConfigSchemaJSON: opt_config_schema.data,
+            optionalConfigJSON: {},
+            siteConfigs: site_configs ? site_configs.data : this.state.siteConfigs,
             languageTexts: this.getLanguageTexts(card.data.data.language)
-          });
+          };
+          this.setState(stateVar);
         }));
+    } else {
+      this.componentDidUpdate();
     }
   }
 
@@ -108,7 +108,7 @@ export default class WaterExploitationCard extends React.Component {
   }
 
   renderCol7() {
-    if (this.state.schemaJSON === undefined ){
+    if (this.state.fetchingData){
       return(<div>Loading</div>)
     } else {
       const data = this.state.dataJSON.data;
@@ -165,7 +165,7 @@ export default class WaterExploitationCard extends React.Component {
   }
 
   renderCol4()  {
-    if (this.state.schemaJSON === undefined ){
+    if (this.state.fetchingData){
       return(<div>Loading</div>)
     } else {
       const data = this.state.dataJSON.data;
@@ -223,7 +223,7 @@ export default class WaterExploitationCard extends React.Component {
 
 
   renderGrid() {
-    if (this.state.schemaJSON === undefined) {
+    if (this.state.fetchingData) {
       return (<div>Loading</div>)
     } else {
       const data = this.state.dataJSON.data;
