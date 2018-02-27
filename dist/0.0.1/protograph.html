@@ -6,7 +6,6 @@
     <title>WaterExploitation</title>
     <link href="https://fonts.googleapis.com/css?family=Bitter:400,700|Cabin:400,400i,500,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="card.min.css">
-
   </head>
   <body>
     <div id="card-name-div"></div></br>
@@ -30,29 +29,18 @@
     }
 
     let view_cast_id = findGetParameter('view_cast_id'),
-      schema_id = findGetParameter('schema_id'),
       mode = findGetParameter('mode'),
-      base_url = findGetParameter('base_url') || "https://cdn.protograph.pykih.com",
-      schema_base_url = "https://cdn.protograph.pykih.com";
+      domain_name = (findGetParameter('domain') || ""),
+      base_url = findGetParameter('base_url') || "https://cdn.protograph.pykih.com";
 
-    if(typeof (view_cast_id) !== 'undefined' && typeof(schema_id) !== 'undefined'){
-      var  data_base_path = base_url + "/" + view_cast_id,
-        schema_base_path = schema_base_url + "/" + schema_id,
-        options;
-      options = {
+    if(typeof (view_cast_id) !== 'undefined'){
+      var  data_base_path = base_url + "/" + view_cast_id;
+      x.init({
         selector: document.querySelector('#card-name-div'),
         data_url: data_base_path + "/data.json",
-        schema_url: schema_base_path + "/schema.json",
-        configuration_url: data_base_path + "/view_cast.json",
-        configuration_schema_url: 'configuration_schema.json',
-        site_config_url: base_url + '/header.json',
-        onClickCallback: function () {
-          let h = x.getData().height;
-          that.send('resize_frame', {width: '100%', height: h})
-        }
-      };
-      options.base_url = window.location.href.split("/protograph.html")[0];
-      x.init(options);
+        domain: domain_name,
+        site_config_url: base_url + '/header.json'
+      })
       renderWithMode(mode);
     }
 

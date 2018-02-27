@@ -29,31 +29,25 @@
     }
 
     let view_cast_id = findGetParameter('view_cast_id'),
-      schema_id = findGetParameter('schema_id'),
-      base_url = findGetParameter('base_url') || "https://cdn.protograph.pykih.com",
-      schema_base_url = "https://cdn.protograph.pykih.com";
+      domain_name = (findGetParameter('domain') || ""),
+      base_url = findGetParameter('base_url') || "https://cdn.protograph.pykih.com";
 
     var ReceiverConsumer = Oasis.Consumer.extend({
       requests: {
         receive: function(mode) {
-          if(typeof (view_cast_id) !== 'undefined' && typeof(schema_id) !== 'undefined'){
+          if(typeof (view_cast_id) !== 'undefined'){
             var that = this,
             data_base_path = base_url + "/" + view_cast_id,
-            schema_base_path = schema_base_url + "/" + schema_id,
-            options;
-            options = {
+            params;
+            params = {
               selector: document.querySelector('#card-name-div'),
-              data_url: data_base_path + "/data.json",
-              schema_url: schema_base_path + "/schema.json",
-              configuration_url: data_base_path + "/view_cast.json",
-              configuration_schema_url: 'configuration_schema.json',
-              site_config_url: base_url + '/header.json',
-              onClickCallback: function () {
-                let h = x.getData().height;
-                that.send('resize_frame', {width: '100%', height: h})
-              }
+              data_url: data_base_path + "/data.json"
             };
-            options.base_url = window.location.href.split("/index.html")[0];
+            if (options && options.headerJSON) {
+              params['site_configs'] = options.headerJSON;
+            } else {
+              params['site_config_url'] = base_url + '/header.json'
+            }
             x.init(options);
             renderWithMode(mode);
           }
