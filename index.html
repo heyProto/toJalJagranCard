@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset = "UTF-8">
+
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Water Exploitation Card</title>
@@ -9,38 +10,40 @@
     <link rel="stylesheet" href="https://cdn.protograph.pykih.com/Assets/proto-app-lib/proto-app-lib.min.css">
     <link rel="stylesheet" type="text/css" href="lib/css/grid.css">
     <link rel="stylesheet" type="text/css" href="src/css/styles.css">
-  </head>
-  <body>
+</head>
+
+<body>
     <style>
-      #water-exp-div {
-        margin: 0 auto;
-      }
-      @media only screen and (max-width: 500px) {
         #water-exp-div {
-          width: 320px;
+            margin: 0 auto;
         }
-      }
+        
+        @media only screen and (max-width: 500px) {
+            #water-exp-div {
+                width: 320px;
+            }
+        }
     </style>
 
     <br>
     <br>
     <br>
     <div id="water-exp-div"></div>
-    <script src = "dist/0.0.1/card.min.js"></script>
+    <script src="dist/0.0.1/card.min.js"></script>
     <script type="text/javascript">
-    var x = new ProtoGraph.Card.WaterExploitation();
-    x.init({
-      selector: document.querySelector('#water-exp-div'),
-      data_url: "dist/0.0.1/sample.json",
-      schema_url: "dist/0.0.1/schema.json",
-      configuration_url: "dist/0.0.1/configuration_sample.json",
-      base_url: "http://localhost:8080/dist/0.0.1",
-      site_config_url: './dist/0.0.1/site.json'
-    })
+        var x = new ProtoGraph.Card.WaterExploitation();
+        x.init({
+            selector: document.querySelector('#water-exp-div'),
+            data_url: "dist/0.0.1/sample.json",
+            schema_url: "dist/0.0.1/schema.json",
+            // configuration_url: "dist/0.0.1/configuration_sample.json",
+            base_url: "http://localhost:8080/dist/0.0.1",
+            site_config_url: './dist/0.0.1/site.json'
+        })
 
-    // x.renderCol7();
-    x.renderCol4();
-
+        // x.renderCol7();
+        x.renderCol4();
     </script>
-  </body>
+</body>
+
 </html>
